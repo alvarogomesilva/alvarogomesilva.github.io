@@ -1,6 +1,14 @@
 'use strict';
 
 
+document.addEventListener('DOMContentLoaded', function() {
+
+  setTimeout(function() {
+      document.body.classList.add('loaded');    
+  }, 1500);
+
+});
+
 
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
@@ -157,3 +165,4 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
