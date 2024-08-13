@@ -479,28 +479,6 @@
 
           <ul class="project-list">
 
-
-            <li class="project-item  active" data-filter-item data-category="mobile">
-              <a href="https://github.com/alvarogomesilva/app_recipes" target="_blank">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-5.png" alt="brawlhalla" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Cuide Bem</h3>
-
-                <p class="project-category">Mobile</p>
-
-              </a>
-            </li>
-
-
-
-
             <li class="project-item  active" data-filter-item data-category="web">
               <a href="https://alvarogomesilva.github.io/responsive-travel-website/" target="_blank">
 
@@ -553,6 +531,25 @@
               </a>
             </li>
 
+            <li class="project-item  active" data-filter-item data-category="mobile">
+              <a href="https://github.com/alvarogomesilva/app_recipes" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-5.png" alt="brawlhalla" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Cuide Bem</h3>
+
+                <p class="project-category">Mobile</p>
+
+              </a>
+            </li>
+
+
           </ul>
 
         </section>
@@ -582,7 +579,7 @@
 
           <h3 class="h3 form-title">Envie uma mensagem</h3>
 
-          <form action="#" class="form" data-form>
+          <form action="#" class="form" data-form id="form">
 
             <div class="input-wrapper">
               <input type="text" name="fullname" class="form-input" placeholder="Seu nome" required data-form-input>
@@ -593,8 +590,9 @@
             <textarea name="message" class="form-input" placeholder="Sua Mensagem" required data-form-input></textarea>
 
             <button class="form-btn" type="submit" disabled data-form-btn>
-              <ion-icon name="paper-plane"></ion-icon>
-              <span>Enviar mensagem</span>
+              <span id="lds-dual-ring"></span>
+              <ion-icon name="paper-plane" id="paper-plane"></ion-icon>
+              <span id="span">Enviar mensagem</span>
             </button>
 
           </form>
@@ -604,9 +602,9 @@
       </article>
 
     </div>
-
+    
   </main>
-
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
   <!--
     - custom js link
   -->

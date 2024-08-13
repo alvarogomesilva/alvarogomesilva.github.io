@@ -1,10 +1,10 @@
 'use strict';
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
-  setTimeout(function() {
-      document.body.classList.add('loaded');    
+  setTimeout(function () {
+    document.body.classList.add('loaded');
   }, 1500);
 
 });
@@ -166,3 +166,48 @@ for (let i = 0; i < navigationLinks.length; i++) {
   });
 }
 
+function showLoad() {
+  let load = document.querySelector('#lds-dual-ring')
+  let arrow = document.querySelector('#paper-plane')
+  let span = document.querySelector('#span')
+
+  load.style.display = 'block'
+  arrow.style.display = 'none'
+  span.style.display = 'none'
+}
+
+function hideLoad() {
+  let load = document.querySelector('#lds-dual-ring')
+  let arrow = document.querySelector('#paper-plane')
+  let span = document.querySelector('#span')
+
+  load.style.display = 'none'
+  arrow.style.display = 'inline'
+  span.style.display = 'inline'
+}
+
+
+(function () {
+  emailjs.init('C7kmb49c-DHnuG1UA'); // Substitua pela sua chave pública do EmailJS
+
+  document.getElementById('form').addEventListener('submit', (event) => {
+    event.preventDefault(); 
+    showLoad()
+    
+
+    // Captura o elemento do formulário
+    let form = event.target;
+
+    // Envia o e-mail
+    emailjs.sendForm('service_2tjn4k8', 'template_7wya64h', form)
+      .then(function (response) {
+        console.log('E-mail enviado com sucesso!');
+        hideLoad()
+        form.reset(); // Limpa o formulário após o envio
+      }, function (error) {
+        console.error('Erro ao enviar e-mail:', error);
+        alert('Falha ao enviar mensagem.');
+        hideLoad()
+      });
+  });
+})();
