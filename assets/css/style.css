@@ -50,8 +50,8 @@
   );
   --text-gradient-yellow: linear-gradient(
     to right, 
-    hsl(45, 100%, 72%), 
-    hsl(35, 100%, 68%)
+    #ffdb70, 
+    #ffbb5c
   );
 
   /* solid */
@@ -64,7 +64,7 @@
   --white-1: hsl(0, 0%, 100%);
   --white-2: hsl(0, 0%, 98%);
   --orange-yellow-crayola: hsl(45, 100%, 72%);
-  --vegas-gold: hsl(45, 54%, 58%);
+  --vegas-gold: #ceb15a;
   --light-gray: hsl(0, 0%, 84%);
   --light-gray-70: hsla(0, 0%, 84%, 0.7);
   --bittersweet-shimmer: hsl(0, 43%, 51%);
@@ -84,7 +84,7 @@
   --fs-5: 15px;
   --fs-6: 14px;
   --fs-7: 13px;
-  --fs-8: 11px;
+  --fs-8: 12px;
 
   /* font-weight */
   --fw-300: 300;
@@ -1681,41 +1681,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   .form-btn ion-icon { font-size: 18px; }
 
 }
-
-/* LOADER SUBMIT */
-
-#lds-dual-ring {
-  color: var(--vegas-gold)
-}
-#lds-dual-ring,
-#lds-dual-ring:after {
-  box-sizing: border-box;
-}
-#lds-dual-ring {
-  display: none;
-  width: 30px;
-  height: 30px;
-}
-#lds-dual-ring:after {
-  content: " ";
-  display: block;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 6.4px solid currentColor;
-  border-color: currentColor transparent currentColor transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
-}
-@keyframes lds-dual-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-
 
 /**
  * responsive larger than 768px screen

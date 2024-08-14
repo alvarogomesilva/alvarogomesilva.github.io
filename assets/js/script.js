@@ -166,48 +166,56 @@ for (let i = 0; i < navigationLinks.length; i++) {
   });
 }
 
-function showLoad() {
-  let load = document.querySelector('#lds-dual-ring')
-  let arrow = document.querySelector('#paper-plane')
-  let span = document.querySelector('#span')
+// SEND EMAIL
 
-  load.style.display = 'block'
-  arrow.style.display = 'none'
-  span.style.display = 'none'
+let button = document.querySelector("[data-form-btn]");
+
+function showLoad() {
+  let message = document.querySelector('#message');
+  message.innerHTML = 'Enviando...'; // Corrigido o texto para 'Enviando...'
+  button.setAttribute("disabled", ""); // Desabilita o botão
 }
 
 function hideLoad() {
-  let load = document.querySelector('#lds-dual-ring')
-  let arrow = document.querySelector('#paper-plane')
-  let span = document.querySelector('#span')
-
-  load.style.display = 'none'
-  arrow.style.display = 'inline'
-  span.style.display = 'inline'
+  let message = document.querySelector('#message');
+  message.innerHTML = 'Enviar mensagem'; // Mensagem padrão
 }
 
+function checkFormValidity() {
+  // Verifica se todos os campos do formulário estão preenchidos
+  let allFilled = Array.from(form.elements).every(element => {
+    return element.type === 'submit' || element.value.trim() !== '';
+  });
+
+  if (allFilled) {
+    button.removeAttribute("disabled"); // Reabilita o botão se todos os campos estiverem preenchidos
+  } else {
+    button.setAttribute("disabled", ""); // Desabilita o botão se algum campo estiver vazio
+  }
+}
 
 (function () {
   emailjs.init('C7kmb49c-DHnuG1UA'); // Substitua pela sua chave pública do EmailJS
 
-  document.getElementById('form').addEventListener('submit', (event) => {
-    event.preventDefault(); 
-    showLoad()
-    
-
-    // Captura o elemento do formulário
-    let form = event.target;
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    showLoad();
 
     // Envia o e-mail
     emailjs.sendForm('service_2tjn4k8', 'template_7wya64h', form)
       .then(function (response) {
         console.log('E-mail enviado com sucesso!');
-        hideLoad()
+        hideLoad();
         form.reset(); // Limpa o formulário após o envio
+        button.setAttribute("disabled", ""); // Desabilita o botão após o envio
       }, function (error) {
         console.error('Erro ao enviar e-mail:', error);
         alert('Falha ao enviar mensagem.');
-        hideLoad()
+        hideLoad();
+        button.setAttribute("disabled", ""); // Desabilita o botão após erro
       });
   });
+
+  // Adiciona o listener para verificar a validade do formulário
+  form.addEventListener('input', checkFormValidity);
 })();
